@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "git@github.com:mermaidjs/mermaid-live-editor.git",
   "author": "Tyler Long <tyler4long@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^10.0.2"
+  }
 }
