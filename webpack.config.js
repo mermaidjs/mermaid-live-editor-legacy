@@ -37,7 +37,10 @@ const config = {
   },
   plugins: [
     new ExtractTextPlugin('[name].bundle.css')
-  ]
+  ],
+  devServer: {
+    contentBase: __dirname
+  }
 }
 
 export default [config]

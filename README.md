@@ -21,7 +21,8 @@ yarn install
 ## Development
 
 ```
-yarn dev-server
+yarn dev
+open http://localhost:8080
 ```
 
 
