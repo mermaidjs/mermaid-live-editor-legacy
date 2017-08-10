@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "upgrade": "yarn-upgrade-all",
-    "dev": "node -r babel-register node_modules/.bin/webpack-dev-server"
+    "dev": "node -r babel-register node_modules/.bin/webpack-dev-server",
+    "test": "standard && jest --coverage",
+    "test:watch": "yarn test -- --watch",
+    "prepush": "yarn test"
   },
   "repository": "git@github.com:mermaidjs/mermaid-live-editor.git",
   "author": "Tyler Long <tyler4long@gmail.com>",
@@ -18,6 +21,8 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^3.0.0",
+    "husky": "^0.14.3",
+    "jest": "^20.0.4",
     "standard": "^10.0.3",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.2",
@@ -35,5 +40,15 @@
     "redux": "^3.7.2",
     "redux-logic": "^0.12.2",
     "rxjs": "^5.4.2"
+  },
+  "standard": {
+    "ignore": [
+      "index.bundle.js"
+    ]
+  },
+  "jest": {
+    "setupFiles": [
+      "./test/setup.js"
+    ]
   }
 }
