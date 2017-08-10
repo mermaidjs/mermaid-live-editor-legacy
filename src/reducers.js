@@ -1,7 +1,6 @@
 import R from 'ramda'
 
 const defaultState = {
-  defaultValue: '',
   value: ''
 }
 
