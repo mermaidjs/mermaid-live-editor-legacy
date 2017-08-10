@@ -1,7 +1,7 @@
 {
   "name": "mermaid-live-editor",
   "version": "0.1.0",
-  "description": "Edit and preview mermaid charts / diagrams.",
+  "description": "Edit, preview and share mermaid charts / diagrams.",
   "main": "index.js",
   "scripts": {
     "upgrade": "yarn-upgrade-all",

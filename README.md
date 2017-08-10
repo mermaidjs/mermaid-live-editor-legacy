@@ -1,6 +1,6 @@
 # mermaid-live-editor
 
-Edit and preview mermaid charts/diagrams.
+Edit, preview and share mermaid charts/diagrams.
 
 
 ## Features
