@@ -1,4 +1,9 @@
-export const setProp = (path, value) => ({ type: 'SET_PROP', path, value })
+export const setProp = (path, value) => {
+  if (!Array.isArray(path)) {
+    path = [path]
+  }
+  return { type: 'SET_PROP', path, value }
+}
 
 export const loadState = () => ({ type: 'LOAD_STATE' })
 
