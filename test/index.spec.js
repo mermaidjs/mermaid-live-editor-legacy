@@ -5,6 +5,7 @@ import App from '../src/App'
 import { getWrapper, defaultValue } from './shared'
 import state from '../state.json'
 import store from './store'
+import { setProp } from '../src/actions'
 
 let wrapper = null
 beforeEach(() => {
@@ -21,6 +22,13 @@ test('load state', () => {
 
     expect(wrapper).toMatchSnapshot()
   })
+})
+
+test('set property', () => {
+  store.dispatch(setProp('value', 'hello'))
+  expect(store.getState().value).toEqual('hello')
+  store.dispatch(setProp(['value'], 'world'))
+  expect(store.getState().value).toEqual('world')
 })
 
 test('edit value', () => {
