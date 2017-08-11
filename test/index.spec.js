@@ -31,12 +31,6 @@ test('set property', () => {
   expect(store.getState().value).toEqual('world')
 })
 
-test('unknown action', () => {
-  const state = store.getState()
-  store.dispatch({ type: 'UNKNOWN_ACTION' })
-  expect(store.getState()).toEqual(state)
-})
-
 test('edit value', () => {
   const textArea = wrapper.find(Input.TextArea).first()
   const value = 'Hello world'
