@@ -17,8 +17,9 @@ class App extends React.Component {
   }
   valueChanged (event) {
     const { setProp, renderMermaid } = this.props
-    setProp('value', event.target.value)
-    renderMermaid(event.target.value)
+    const value = event.target.value
+    setProp('value', value)
+    renderMermaid(value)
   }
   render () {
     console.log(`render App`)
@@ -29,8 +30,7 @@ class App extends React.Component {
           <Input.TextArea rows={6} value={value} onChange={this.valueChanged} />
         </Col>
         <Col span={18}>
-          <h1>Hello mermaid live editor!</h1>
-          <div className='chart'>{value}</div>
+          <div id='preview' />
         </Col>
       </Row>
     )
