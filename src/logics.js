@@ -13,6 +13,17 @@ const loadStateLogic = createLogic({
   }
 })
 
+const renderMermaidLogic = createLogic({
+  type: 'RENDER_MERMAID',
+  debounce: 1000,
+  latest: true,
+  async process ({ getState, action }, dispatch, done) {
+    console.info('render mermaid')
+    done()
+  }
+})
+
 export default [
-  loadStateLogic
+  loadStateLogic,
+  renderMermaidLogic
 ]
