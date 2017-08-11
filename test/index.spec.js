@@ -24,4 +24,5 @@ test('edit value', () => {
   const value = 'Hello world'
   textArea.props().onChange({ target: { value } })
   expect(store.getState().value).toEqual(value)
+  expect(textArea.props().value).toEqual(value)
 })

@@ -2,6 +2,8 @@ import React from 'react'
 import { Row, Col, Input } from 'antd'
 import { connect } from 'react-redux'
 import R from 'ramda'
+import 'mermaid'
+import 'mermaid/dist/mermaid.forest.css'
 
 import { loadState, setProp } from './actions'
 
