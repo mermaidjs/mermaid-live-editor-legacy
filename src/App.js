@@ -30,7 +30,7 @@ class App extends React.Component {
         </Col>
         <Col span={18}>
           <h1>Hello mermaid live editor!</h1>
-          <pre>{value}</pre>
+          <div className='chart'>{value}</div>
         </Col>
       </Row>
     )

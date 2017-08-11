@@ -19,6 +19,7 @@ const renderMermaidLogic = createLogic({
   latest: true,
   async process ({ getState, action }, dispatch, done) {
     console.info('render mermaid')
+    window.mermaid.init(undefined, document.querySelectorAll('.chart'))
     done()
   }
 })
