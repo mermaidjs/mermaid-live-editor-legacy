@@ -54,7 +54,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(css)$": "<rootDir>/test/__mocks__/styleMock.js"
+      "\\.(css)$": "<rootDir>/node_modules/identity-obj-proxy/src/index.js"
     },
     "setupFiles": [
       "./test/setup.js"
