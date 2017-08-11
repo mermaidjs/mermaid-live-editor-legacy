@@ -23,6 +23,6 @@ test('edit value', () => {
   const textArea = wrapper.find(Input.TextArea).first()
   const value = 'Hello world'
   textArea.props().onChange({ target: { value } })
-  expect(store.getState().value).toEqual(value)
   expect(textArea.props().value).toEqual(value)
+  expect(store.getState().value).toEqual(value)
 })
