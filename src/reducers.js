@@ -14,7 +14,7 @@ const reducer = (state = defaultState, action) => {
       if (action.type !== '@@redux/INIT' && action.type !== 'LOAD_STATE') {
         // When app starts, '@@redux/INIT' invoked by Redux
         // 'LOAD_STATE' is handled by redux-logic
-        console.error('error', `Unknown action type: ${action.type}`)
+        console.info(`Unknown action type: ${action.type}`)
       }
       return R.always(state)
   }

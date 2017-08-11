@@ -27,8 +27,14 @@ test('load state', () => {
 test('set property', () => {
   store.dispatch(setProp('value', 'hello'))
   expect(store.getState().value).toEqual('hello')
-  store.dispatch(setProp(['value'], 'world'))
+  store.dispatch(setProp(['value'], 'world')) // first param is either string or array
   expect(store.getState().value).toEqual('world')
+})
+
+test('unknown action', () => {
+  const state = store.getState()
+  store.dispatch({ type: 'UNKNOWN_ACTION' })
+  expect(store.getState()).toEqual(state)
 })
 
 test('edit value', () => {
