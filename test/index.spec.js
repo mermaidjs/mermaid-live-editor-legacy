@@ -18,6 +18,8 @@ test('load state', () => {
       { type: 'SET_STATE', state: defaultValue }
     ])
     expect(store.getState()).toEqual(defaultValue)
+
+    expect(wrapper).toMatchSnapshot()
   })
 })
 
@@ -27,4 +29,6 @@ test('edit value', () => {
   textArea.props().onChange({ target: { value } })
   expect(textArea.props().value).toEqual(value)
   expect(store.getState().value).toEqual(value)
+
+  expect(wrapper).toMatchSnapshot()
 })

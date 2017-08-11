@@ -22,6 +22,7 @@
     "coveralls": "^2.13.1",
     "css-loader": "^0.28.4",
     "enzyme": "^2.9.1",
+    "enzyme-to-json": "^1.5.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
@@ -58,7 +59,10 @@
       "\\.(css)$": "<rootDir>/node_modules/identity-obj-proxy/src/index.js"
     },
     "setupFiles": [
-      "./test/setup.js"
+      "<rootDir>/test/setup.js"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/enzyme-to-json/serializer"
     ]
   }
 }
