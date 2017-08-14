@@ -1,7 +1,7 @@
 import { createLogic } from 'redux-logic'
 import axios from 'axios'
 
-import { setState, renderMermaid } from './actions'
+import { setState } from './actions'
 
 const loadStateLogic = createLogic({
   type: 'LOAD_STATE',
@@ -9,7 +9,6 @@ const loadStateLogic = createLogic({
   async process ({ getState, action }, dispatch, done) {
     const res = await axios.get('/state.json')
     dispatch(setState(res.data))
-    dispatch(renderMermaid(action.mermaidContainer))
     done()
   }
 })

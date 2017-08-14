@@ -13,13 +13,12 @@ class App extends React.Component {
     this.valueChanged = this.valueChanged.bind(this)
   }
   componentDidMount () {
-    this.props.loadState(this.mermaidContainer)
+    this.props.loadState()
   }
   valueChanged (event) {
-    const { setProp, renderMermaid } = this.props
+    const { setProp } = this.props
     const value = event.target.value
     setProp('value', value)
-    renderMermaid(this.mermaidContainer)
   }
   render () {
     console.log(`render App`)
@@ -34,6 +33,9 @@ class App extends React.Component {
         </Col>
       </Row>
     )
+  }
+  componentDidUpdate () {
+    this.props.renderMermaid(this.mermaidContainer)
   }
 }
 

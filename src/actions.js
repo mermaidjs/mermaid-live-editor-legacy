@@ -5,7 +5,7 @@ export const setProp = (path, value) => {
   return { type: 'SET_PROP', path, value }
 }
 
-export const loadState = (mermaidContainer) => ({ type: 'LOAD_STATE', mermaidContainer })
+export const loadState = () => ({ type: 'LOAD_STATE' })
 
 export const setState = (state) => ({ type: 'SET_STATE', state })
 
