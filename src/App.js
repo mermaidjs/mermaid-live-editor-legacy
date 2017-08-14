@@ -13,13 +13,13 @@ class App extends React.Component {
     this.valueChanged = this.valueChanged.bind(this)
   }
   componentDidMount () {
-    this.props.loadState()
+    this.props.loadState(this.mermaidContainer)
   }
   valueChanged (event) {
     const { setProp, renderMermaid } = this.props
     const value = event.target.value
     setProp('value', value)
-    renderMermaid()
+    renderMermaid(this.mermaidContainer)
   }
   render () {
     console.log(`render App`)
@@ -30,7 +30,7 @@ class App extends React.Component {
           <Input.TextArea rows={6} value={value} onChange={this.valueChanged} />
         </Col>
         <Col span={18}>
-          <div id='preview' />
+          <div id='preview' ref={(div) => { this.mermaidContainer = div }} />
         </Col>
       </Row>
     )

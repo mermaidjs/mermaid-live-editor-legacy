@@ -6,6 +6,9 @@ exports[`edit value 1`] = `
     Object {
       "actions": Array [
         Object {
+          "mermaidContainer": <div
+            id="preview"
+    />,
           "type": "LOAD_STATE",
         },
         Object {
@@ -99,14 +102,9 @@ exports[`edit value 1`] = `
                 }
               }
             >
-              <h1>
-                Hello mermaid live editor!
-              </h1>
               <div
-                className="mermaid"
-              >
-                Hello world
-              </div>
+                id="preview"
+              />
             </div>
           </Col>
         </div>
@@ -122,6 +120,22 @@ exports[`load state 1`] = `
     Object {
       "actions": Array [
         Object {
+          "mermaidContainer": <div
+            id="preview"
+            data-processed="true"
+    >
+            <div
+                    id="dmermaidChart0"
+            >
+                    <svg
+                            id="mermaidChart0"
+                            width="100%"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                            <g />
+                    </svg>
+            </div>
+    </div>,
           "type": "LOAD_STATE",
         },
         Object {
@@ -130,6 +144,25 @@ exports[`load state 1`] = `
     A-->B",
           },
           "type": "SET_STATE",
+        },
+        Object {
+          "mermaidContainer": <div
+            id="preview"
+            data-processed="true"
+    >
+            <div
+                    id="dmermaidChart0"
+            >
+                    <svg
+                            id="mermaidChart0"
+                            width="100%"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                            <g />
+                    </svg>
+            </div>
+    </div>,
+          "type": "RENDER_MERMAID",
         },
       ],
       "dispatch": [Function],
@@ -218,15 +251,9 @@ exports[`load state 1`] = `
                 }
               }
             >
-              <h1>
-                Hello mermaid live editor!
-              </h1>
               <div
-                className="mermaid"
-              >
-                graph LR
-                A--&gt;B
-              </div>
+                id="preview"
+              />
             </div>
           </Col>
         </div>
@@ -242,6 +269,9 @@ exports[`set property 1`] = `
     Object {
       "actions": Array [
         Object {
+          "mermaidContainer": <div
+            id="preview"
+    />,
           "type": "LOAD_STATE",
         },
         Object {
@@ -342,14 +372,9 @@ exports[`set property 1`] = `
                 }
               }
             >
-              <h1>
-                Hello mermaid live editor!
-              </h1>
               <div
-                className="mermaid"
-              >
-                world
-              </div>
+                id="preview"
+              />
             </div>
           </Col>
         </div>

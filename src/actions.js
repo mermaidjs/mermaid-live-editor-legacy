@@ -5,8 +5,8 @@ export const setProp = (path, value) => {
   return { type: 'SET_PROP', path, value }
 }
 
-export const loadState = () => ({ type: 'LOAD_STATE' })
+export const loadState = (mermaidContainer) => ({ type: 'LOAD_STATE', mermaidContainer })
 
 export const setState = (state) => ({ type: 'SET_STATE', state })
 
-export const renderMermaid = () => ({ type: 'RENDER_MERMAID' })
+export const renderMermaid = (mermaidContainer) => ({ type: 'RENDER_MERMAID', mermaidContainer })

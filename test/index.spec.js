@@ -14,10 +14,6 @@ beforeEach(() => {
 
 test('load state', () => {
   return store.whenComplete(() => { // because it is async
-    expect(store.actions).toEqual([
-      { type: 'LOAD_STATE' },
-      { type: 'SET_STATE', state: defaultValue }
-    ])
     expect(store.getState()).toEqual(defaultValue)
 
     expect(wrapper).toMatchSnapshot()

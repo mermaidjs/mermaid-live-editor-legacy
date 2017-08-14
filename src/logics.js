@@ -9,7 +9,7 @@ const loadStateLogic = createLogic({
   async process ({ getState, action }, dispatch, done) {
     const res = await axios.get('/state.json')
     dispatch(setState(res.data))
-    dispatch(renderMermaid())
+    dispatch(renderMermaid(action.mermaidContainer))
     done()
   }
 })
@@ -20,7 +20,7 @@ const renderMermaidLogic = createLogic({
   latest: true,
   async process ({ getState, action }, dispatch, done) {
     console.info('render mermaid')
-    const element = document.getElementById('preview')
+    const element = action.mermaidContainer
     element.removeAttribute('data-processed')
     element.innerHTML = getState().value
     window.mermaid.init(undefined, element)
