@@ -17,7 +17,7 @@ class App extends React.Component {
     return (
       <Row gutter={16}>
         <Col span={6}>
-          <Input.TextArea rows={6} value={value} onChange={event => setProp('value', event.target.value)} />
+          <Input.TextArea rows={16} value={value} onChange={event => setProp('value', event.target.value)} />
         </Col>
         <Col span={18}>
           <div id='preview' ref={div => { this.mermaidContainer = div }} />
