@@ -18,7 +18,7 @@ const renderMermaidLogic = createLogic({
   debounce: 1000,
   latest: true,
   async process ({ getState, action }, dispatch, done) {
-    console.info('render mermaid')
+    console.log('render mermaid')
     const element = action.mermaidContainer
     element.removeAttribute('data-processed')
     element.innerHTML = getState().value

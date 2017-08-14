@@ -8,28 +8,19 @@ import 'mermaid/dist/mermaid.forest.css'
 import { loadState, setProp, renderMermaid } from './actions'
 
 class App extends React.Component {
-  constructor (props) {
-    super(props)
-    this.valueChanged = this.valueChanged.bind(this)
-  }
   componentDidMount () {
     this.props.loadState()
   }
-  valueChanged (event) {
-    const { setProp } = this.props
-    const value = event.target.value
-    setProp('value', value)
-  }
   render () {
     console.log(`render App`)
-    const { value } = this.props
+    const { value, setProp } = this.props
     return (
       <Row gutter={16}>
         <Col span={6}>
-          <Input.TextArea rows={6} value={value} onChange={this.valueChanged} />
+          <Input.TextArea rows={6} value={value} onChange={event => setProp('value', event.target.value)} />
         </Col>
         <Col span={18}>
-          <div id='preview' ref={(div) => { this.mermaidContainer = div }} />
+          <div id='preview' ref={div => { this.mermaidContainer = div }} />
         </Col>
       </Row>
     )
