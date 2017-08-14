@@ -60,9 +60,6 @@
     },
     "setupFiles": [
       "<rootDir>/test/setup.js"
-    ],
-    "snapshotSerializers": [
-      "<rootDir>/node_modules/enzyme-to-json/serializer"
     ]
   }
 }

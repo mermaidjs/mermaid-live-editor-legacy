@@ -15,8 +15,6 @@ beforeEach(() => {
 test('load state', () => {
   return store.whenComplete(() => { // because it is async
     expect(store.getState()).toEqual(defaultValue)
-
-    expect(wrapper).toMatchSnapshot()
   })
 })
 
@@ -25,8 +23,6 @@ test('set property', () => {
   expect(store.getState().value).toEqual('hello')
   store.dispatch(setProp(['value'], 'world')) // first param is either string or array
   expect(store.getState().value).toEqual('world')
-
-  expect(wrapper).toMatchSnapshot()
 })
 
 test('edit value', () => {
@@ -35,6 +31,4 @@ test('edit value', () => {
   textArea.props().onChange({ target: { value } })
   expect(textArea.props().value).toEqual(value)
   expect(store.getState().value).toEqual(value)
-
-  expect(wrapper).toMatchSnapshot()
 })
