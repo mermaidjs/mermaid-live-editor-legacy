@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Input } from 'antd'
+import { Row, Col, Input, Button } from 'antd'
 import { connect } from 'react-redux'
 import R from 'ramda'
 import 'mermaid'
@@ -8,6 +8,13 @@ import 'mermaid/dist/mermaid.forest.css'
 import { loadState, setProp, renderMermaid } from './actions'
 
 class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.onDownloadSVG = this.onDownloadSVG.bind(this)
+  }
+  onDownloadSVG (event) {
+    event.target.href = `data:image/png;base64,${window.btoa(this.mermaidContainer.innerHTML)}`
+  }
   componentDidMount () {
     this.props.loadState()
   }
@@ -21,6 +28,8 @@ class App extends React.Component {
         </Col>
         <Col span={18}>
           <div id='preview' ref={div => { this.mermaidContainer = div }} />
+          <div className='separator' />
+          <Button><a href='' download='diagram.svg' onClick={this.onDownloadSVG}>Download SVG</a></Button>
         </Col>
       </Row>
     )
