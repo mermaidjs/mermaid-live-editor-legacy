@@ -21,8 +21,17 @@ const renderMermaidLogic = createLogic({
     console.log('render mermaid')
     const element = action.mermaidContainer
     element.removeAttribute('data-processed')
-    element.innerHTML = getState().value
-    window.mermaid.init(undefined, element)
+    let mermaidError = null
+    window.mermaid.parseError = (error, hash) => {
+      mermaidError = error
+    }
+    const value = getState().value
+    if (window.mermaid.parse(value) || mermaidError === null) {
+      element.innerHTML = value
+      window.mermaid.init(undefined, element)
+    } else {
+      element.innerHTML = `<pre>${mermaidError}</pre>`
+    }
     done()
   }
 })
