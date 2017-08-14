@@ -6,3 +6,7 @@ html, body {
   border-bottom: 1px dotted gray;
   margin: 16px 0;
 }
+
+.hidden {
+  display: none;
+}

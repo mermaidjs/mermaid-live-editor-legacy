@@ -14,7 +14,7 @@ beforeEach(() => {
 
 test('load state', () => {
   return store.whenComplete(() => { // because it is async
-    expect(store.getState()).toEqual(defaultValue)
+    expect(store.getState().value).toEqual(defaultValue.value)
   })
 })
 

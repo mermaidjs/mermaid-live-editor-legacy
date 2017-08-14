@@ -20,16 +20,28 @@ class App extends React.Component {
   }
   render () {
     console.log(`render App`)
-    const { value, setProp } = this.props
+    const { value, error, setProp } = this.props
+    let content = ''
+    if (error) {
+      content = <div>
+        <div ref={div => { this.mermaidContainer = div }} className='hidden' />
+        <pre>{error}</pre>
+      </div>
+    } else {
+      content = <div>
+        <div ref={div => { this.mermaidContainer = div }} />
+        <div className='separator' />
+        <Button><a href='' download='diagram.svg' onClick={this.onDownloadSVG}>Download SVG</a></Button>
+      </div>
+    }
     return (
       <Row gutter={16}>
         <Col span={6}>
           <Input.TextArea rows={16} value={value} onChange={event => setProp('value', event.target.value)} />
         </Col>
         <Col span={18}>
-          <div id='preview' ref={div => { this.mermaidContainer = div }} />
-          <div className='separator' />
-          <Button><a href='' download='diagram.svg' onClick={this.onDownloadSVG}>Download SVG</a></Button>
+
+          {content}
         </Col>
       </Row>
     )
@@ -39,4 +51,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(R.pick(['value']), { loadState, setProp, renderMermaid })(App)
+export default connect(R.pick(['value', 'error']), { loadState, setProp, renderMermaid })(App)

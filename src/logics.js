@@ -1,7 +1,7 @@
 import { createLogic } from 'redux-logic'
 import axios from 'axios'
 
-import { setState } from './actions'
+import { setState, setProp } from './actions'
 
 const loadStateLogic = createLogic({
   type: 'LOAD_STATE',
@@ -19,18 +19,19 @@ const renderMermaidLogic = createLogic({
   latest: true,
   async process ({ getState, action }, dispatch, done) {
     console.log('render mermaid')
-    const element = action.mermaidContainer
-    element.removeAttribute('data-processed')
     let mermaidError = null
     window.mermaid.parseError = (error, hash) => {
       mermaidError = error
     }
     const value = getState().value
     if (window.mermaid.parse(value) || mermaidError === null) {
+      dispatch(setProp('error', false))
+      const element = action.mermaidContainer
+      element.removeAttribute('data-processed')
       element.innerHTML = value
       window.mermaid.init(undefined, element)
     } else {
-      element.innerHTML = `<pre>${mermaidError}</pre>`
+      dispatch(setProp('error', mermaidError))
     }
     done()
   }

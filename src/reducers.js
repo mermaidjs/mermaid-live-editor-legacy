@@ -1,7 +1,8 @@
 import R from 'ramda'
 
 const defaultState = {
-  value: ''
+  value: '',
+  error: false
 }
 
 const reducer = (state = defaultState, action) => {
