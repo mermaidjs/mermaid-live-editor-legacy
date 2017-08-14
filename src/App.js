@@ -19,7 +19,7 @@ class App extends React.Component {
     const { setProp, renderMermaid } = this.props
     const value = event.target.value
     setProp('value', value)
-    renderMermaid(value)
+    renderMermaid()
   }
   render () {
     console.log(`render App`)

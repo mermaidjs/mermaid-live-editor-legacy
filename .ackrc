@@ -1,3 +1,4 @@
 --ignore-file=match:/^.+\.bundle\..+$/
 --ignore-file=match:/^yarn\.lock$/
 --ignore-dir=coverage
+--ignore-dir=test/__snapshots__
