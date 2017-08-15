@@ -5,7 +5,7 @@ export const setProp = (path, value) => {
   return { type: 'SET_PROP', path, value }
 }
 
-export const loadState = (value) => ({ type: 'LOAD_STATE', value })
+export const loadState = (value, view) => ({ type: 'LOAD_STATE', value, view })
 
 export const setState = (state) => ({ type: 'SET_STATE', state })
 

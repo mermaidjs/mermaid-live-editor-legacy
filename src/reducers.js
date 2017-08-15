@@ -2,7 +2,8 @@ import R from 'ramda'
 
 const defaultState = {
   value: '',
-  error: false
+  error: false,
+  view: false
 }
 
 const reducer = (state = defaultState, action) => {

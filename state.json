@@ -1,4 +1,5 @@
 {
   "value": "sequenceDiagram\nA->> B: Query\nB->> C: Forward query\nNote right of C: Thinking...\nC->> B: Response\nB->> A: Forward response",
-  "error": false
+  "error": false,
+  "view": false
 }

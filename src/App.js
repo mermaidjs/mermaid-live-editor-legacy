@@ -12,6 +12,7 @@ class App extends React.Component {
     super(props)
     this.onDownloadSVG = this.onDownloadSVG.bind(this)
     this.onLinkToEdit = this.onLinkToEdit.bind(this)
+    this.onLinkToView = this.onLinkToView.bind(this)
   }
   onDownloadSVG (event) {
     event.target.href = `data:image/png;base64,${window.btoa(this.mermaidContainer.innerHTML)}`
@@ -19,10 +20,18 @@ class App extends React.Component {
   onLinkToEdit (event) {
     event.target.href = `#${window.btoa(this.props.value)}`
   }
+  onLinkToView (event) {
+    event.target.href = `#/view/${window.btoa(this.props.value)}`
+  }
   componentDidMount () {
-    const hash = window.location.hash.substr(1)
+    let hash = window.location.hash.substr(1)
     let value = false
+    let view = false
     if (hash.length > 0) {
+      if (hash.startsWith('/view/')) {
+        hash = hash.substr(6)
+        view = true
+      }
       try {
         value = window.atob(hash)
       } catch (err) {
@@ -30,11 +39,11 @@ class App extends React.Component {
         value = ''
       }
     }
-    this.props.loadState(value)
+    this.props.loadState(value, view)
   }
   render () {
     console.log(`render App`)
-    const { value, error, setProp } = this.props
+    const { value, error, view, setProp } = this.props
     let content = ''
     if (error) {
       content = <div>
@@ -44,13 +53,15 @@ class App extends React.Component {
     } else {
       content = <div>
         <div ref={div => { this.mermaidContainer = div }} />
-        <div className='separator' />
-        <Button><a href=''>LINK TO VIEW</a></Button>
-        <Button><a href='' onClick={this.onLinkToEdit}>LINK TO EDIT</a></Button>
-        <Button><a href='' download='diagram.svg' onClick={this.onDownloadSVG}>DOWNLOAD SVG</a></Button>
+        {view ? null : <div>
+          <div className='separator' />
+          <Button><a href='' target='_blank' onClick={this.onLinkToView}>LINK TO VIEW</a></Button>
+          <Button><a href='' onClick={this.onLinkToEdit}>LINK TO EDIT</a></Button>
+          <Button><a href='' download='diagram.svg' onClick={this.onDownloadSVG}>DOWNLOAD SVG</a></Button>
+        </div>}
       </div>
     }
-    return (
+    return view ? content : (
       <Row gutter={16}>
         <Col span={6}>
           <Input.TextArea rows={16} value={value} onChange={event => setProp('value', event.target.value)} />
@@ -66,4 +77,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(R.pick(['value', 'error']), { loadState, setProp, renderMermaid })(App)
+export default connect(R.pick(['value', 'error', 'view']), { loadState, setProp, renderMermaid })(App)

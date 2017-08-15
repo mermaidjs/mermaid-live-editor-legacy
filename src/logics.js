@@ -12,6 +12,7 @@ const loadStateLogic = createLogic({
     if (action.value !== false) {
       state.value = action.value
     }
+    state.view = action.view
     dispatch(setState(state))
     done()
   }
