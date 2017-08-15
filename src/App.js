@@ -48,19 +48,13 @@ class App extends React.Component {
     const { value, error, view, setProp } = this.props
     let content = ''
     if (error) {
-      content = <div>
-        <div ref={div => { this.mermaidContainer = div }} className='hidden' />
-        <pre>{error}</pre>
-      </div>
+      content = <pre>{error}</pre>
     } else {
-      content = <div>
-        <div ref={div => { this.mermaidContainer = div }} />
-        {view ? null : <div>
-          <div className='separator' />
-          <Button><a href='' target='_blank' onClick={this.onLinkToView}>LINK TO VIEW</a></Button>
-          <Button><a href='' onClick={this.onLinkToEdit}>LINK TO EDIT</a></Button>
-          <Button><a href='' download='' onClick={this.onDownloadSVG}>DOWNLOAD SVG</a></Button>
-        </div>}
+      content = view ? null : <div>
+        <div className='separator' />
+        <Button><a href='' target='_blank' onClick={this.onLinkToView}>LINK TO VIEW</a></Button>
+        <Button><a href='' onClick={this.onLinkToEdit}>LINK TO EDIT</a></Button>
+        <Button><a href='' download='' onClick={this.onDownloadSVG}>DOWNLOAD SVG</a></Button>
       </div>
     }
     return view ? content : (
@@ -69,6 +63,7 @@ class App extends React.Component {
           <Input.TextArea rows={16} value={value} onChange={event => setProp('value', event.target.value)} />
         </Col>
         <Col span={18}>
+          <div ref={div => { this.mermaidContainer = div }} className={error ? 'hidden' : null} />
           {content}
         </Col>
       </Row>
