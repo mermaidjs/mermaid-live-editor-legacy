@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import R from 'ramda'
 import 'mermaid'
 import 'mermaid/dist/mermaid.forest.css'
+import moment from 'moment'
 
 import { loadState, setProp, renderMermaid } from './actions'
 
@@ -16,6 +17,7 @@ class App extends React.Component {
   }
   onDownloadSVG (event) {
     event.target.href = `data:image/png;base64,${window.btoa(this.mermaidContainer.innerHTML)}`
+    event.target.download = `mermaid-diagram-${moment().format('YYYYMMDDHHmmss')}.svg`
   }
   onLinkToEdit (event) {
     event.target.href = `#${window.btoa(this.props.value)}`
@@ -57,7 +59,7 @@ class App extends React.Component {
           <div className='separator' />
           <Button><a href='' target='_blank' onClick={this.onLinkToView}>LINK TO VIEW</a></Button>
           <Button><a href='' onClick={this.onLinkToEdit}>LINK TO EDIT</a></Button>
-          <Button><a href='' download='diagram.svg' onClick={this.onDownloadSVG}>DOWNLOAD SVG</a></Button>
+          <Button><a href='' download='' onClick={this.onDownloadSVG}>DOWNLOAD SVG</a></Button>
         </div>}
       </div>
     }
