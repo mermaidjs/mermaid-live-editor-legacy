@@ -12,8 +12,8 @@ beforeEach(() => {
   wrapper = getWrapper(App, state)
 })
 
-test('load state', async () => {
-  await timeout(1000)
+test('initial state', async () => {
+  await timeout(3000) // wait for load state and render mermaid
   expect(store.getState().value).toEqual(defaultValue.value)
 })
 
