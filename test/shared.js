@@ -15,7 +15,7 @@ axios.defaults.adapter = httpAdapter
 export const defaultValue = { value: 'graph LR\nA-->B' }
 
 export const getWrapper = (Component, state) => {
-  nock(host).get('/state.json').reply(200, defaultValue)
+  nock(host).get('state.json').reply(200, defaultValue)
   store.dispatch(setState(state))
   store.resetActions()
   return mount(

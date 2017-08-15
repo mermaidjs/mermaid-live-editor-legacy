@@ -7,7 +7,7 @@ const loadStateLogic = createLogic({
   type: 'LOAD_STATE',
   latest: true,
   async process ({ getState, action }, dispatch, done) {
-    const res = await axios.get('/state.json')
+    const res = await axios.get('state.json')
     const state = res.data
     if (action.value !== false) {
       state.value = action.value
