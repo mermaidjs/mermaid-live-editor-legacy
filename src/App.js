@@ -31,7 +31,9 @@ class App extends React.Component {
       content = <div>
         <div ref={div => { this.mermaidContainer = div }} />
         <div className='separator' />
-        <Button><a href='' download='diagram.svg' onClick={this.onDownloadSVG}>Download SVG</a></Button>
+        <Button><a href=''>LINK TO VIEW</a></Button>
+        <Button><a href=''>LINK TO EDIT</a></Button>
+        <Button><a href='' download='diagram.svg' onClick={this.onDownloadSVG}>DOWNLOAD SVG</a></Button>
       </div>
     }
     return (
@@ -40,7 +42,6 @@ class App extends React.Component {
           <Input.TextArea rows={16} value={value} onChange={event => setProp('value', event.target.value)} />
         </Col>
         <Col span={18}>
-
           {content}
         </Col>
       </Row>

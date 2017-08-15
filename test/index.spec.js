@@ -2,7 +2,7 @@
 import { Input } from 'antd'
 
 import App from '../src/App'
-import { getWrapper, defaultValue } from './shared'
+import { getWrapper, defaultValue, timeout } from './shared'
 import state from '../state.json'
 import store from './store'
 import { setProp } from '../src/actions'
@@ -12,10 +12,9 @@ beforeEach(() => {
   wrapper = getWrapper(App, state)
 })
 
-test('load state', () => {
-  return store.whenComplete(() => { // because it is async
-    expect(store.getState().value).toEqual(defaultValue.value)
-  })
+test('load state', async () => {
+  await timeout(1000)
+  expect(store.getState().value).toEqual(defaultValue.value)
 })
 
 test('set property', () => {

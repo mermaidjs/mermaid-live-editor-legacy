@@ -24,3 +24,5 @@ export const getWrapper = (Component, state) => {
     </Provider>
   )
 }
+
+export const timeout = (ms) => new Promise(resolve => { setTimeout(() => resolve(true), ms) })
