@@ -11,12 +11,26 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.onDownloadSVG = this.onDownloadSVG.bind(this)
+    this.onLinkToEdit = this.onLinkToEdit.bind(this)
   }
   onDownloadSVG (event) {
     event.target.href = `data:image/png;base64,${window.btoa(this.mermaidContainer.innerHTML)}`
   }
+  onLinkToEdit (event) {
+    event.target.href = `#${window.btoa(this.props.value)}`
+  }
   componentDidMount () {
-    this.props.loadState()
+    const hash = window.location.hash.substr(1)
+    let value = false
+    if (hash.length > 0) {
+      try {
+        value = window.atob(hash)
+      } catch (err) {
+        console.error('The hash in URL is an invalid base64 string')
+        value = ''
+      }
+    }
+    this.props.loadState(value)
   }
   render () {
     console.log(`render App`)
@@ -32,7 +46,7 @@ class App extends React.Component {
         <div ref={div => { this.mermaidContainer = div }} />
         <div className='separator' />
         <Button><a href=''>LINK TO VIEW</a></Button>
-        <Button><a href=''>LINK TO EDIT</a></Button>
+        <Button><a href='' onClick={this.onLinkToEdit}>LINK TO EDIT</a></Button>
         <Button><a href='' download='diagram.svg' onClick={this.onDownloadSVG}>DOWNLOAD SVG</a></Button>
       </div>
     }

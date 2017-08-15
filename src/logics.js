@@ -8,7 +8,11 @@ const loadStateLogic = createLogic({
   latest: true,
   async process ({ getState, action }, dispatch, done) {
     const res = await axios.get('/state.json')
-    dispatch(setState(res.data))
+    const state = res.data
+    if (action.value !== false) {
+      state.value = action.value
+    }
+    dispatch(setState(state))
     done()
   }
 })
