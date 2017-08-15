@@ -8,6 +8,12 @@ import moment from 'moment'
 
 import { loadState, setProp, renderMermaid } from './actions'
 
+const TextArea = ({value, onChange}) => (
+  <Col span={6}>
+    <Input.TextArea rows={16} value={value} onChange={onChange} />
+  </Col>
+)
+
 class App extends React.Component {
   constructor (props) {
     super(props)
@@ -46,28 +52,31 @@ class App extends React.Component {
   render () {
     console.log(`render App`)
     const { value, error, view, setProp } = this.props
-    let content = ''
+
     if (error) {
-      content = <pre>{error}</pre>
-    } else {
-      content = view ? null : <div>
+      return <Row gutter={16}>
+        <TextArea value={value} onChange={event => setProp('value', event.target.value)} />
+        <Col span={18}>
+          <div ref={div => { this.mermaidContainer = div }} className='hidden' />
+          <pre>{error}</pre>
+        </Col>
+      </Row>
+    }
+
+    if (view) {
+      return <div ref={div => { this.mermaidContainer = div }} />
+    }
+
+    return <Row gutter={16}>
+      <TextArea value={value} onChange={event => setProp('value', event.target.value)} />
+      <Col span={18}>
+        <div ref={div => { this.mermaidContainer = div }} />
         <div className='separator' />
         <Button><a href='' target='_blank' onClick={this.onLinkToView}>LINK TO VIEW</a></Button>
         <Button><a href='' onClick={this.onLinkToEdit}>LINK TO EDIT</a></Button>
         <Button><a href='' download='' onClick={this.onDownloadSVG}>DOWNLOAD SVG</a></Button>
-      </div>
-    }
-    return view ? content : (
-      <Row gutter={16}>
-        <Col span={6}>
-          <Input.TextArea rows={16} value={value} onChange={event => setProp('value', event.target.value)} />
-        </Col>
-        <Col span={18}>
-          <div ref={div => { this.mermaidContainer = div }} className={error ? 'hidden' : null} />
-          {content}
-        </Col>
-      </Row>
-    )
+      </Col>
+    </Row>
   }
   componentDidUpdate () {
     this.props.renderMermaid(this.mermaidContainer)
