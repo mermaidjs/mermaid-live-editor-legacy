@@ -1,5 +1,7 @@
 # mermaid-live-editor
 
+### :exclamation: this project is deprecated in favor of [this one](https://github.com/mermaidjs/mermaid-live-editor)
+
 [![Build Status](https://travis-ci.org/mermaidjs/mermaid-live-editor.svg?branch=master)](https://travis-ci.org/mermaidjs/mermaid-live-editor)
 [![Coverage Status](https://coveralls.io/repos/github/mermaidjs/mermaid-live-editor/badge.svg?branch=master)](https://coveralls.io/github/mermaidjs/mermaid-live-editor?branch=master)
 
