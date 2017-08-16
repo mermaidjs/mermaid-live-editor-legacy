@@ -1,11 +1,16 @@
 # mermaid-live-editor
 
-### :exclamation: this project is deprecated in favor of [this one](https://github.com/mermaidjs/mermaid-live-editor)
-
 [![Build Status](https://travis-ci.org/mermaidjs/mermaid-live-editor.svg?branch=master)](https://travis-ci.org/mermaidjs/mermaid-live-editor)
 [![Coverage Status](https://coveralls.io/repos/github/mermaidjs/mermaid-live-editor/badge.svg?branch=master)](https://coveralls.io/github/mermaidjs/mermaid-live-editor?branch=master)
 
 Edit, preview and share mermaid charts/diagrams.
+
+
+## :exclamation: deprecated :exclamation:
+
+This project is deprecated in favor of [this one](https://github.com/mermaidjs/mermaid-live-editor)
+
+The reason is it is implemented in an unnecessary complicated way. It uses Redux as well as some middleware.
 
 
 ## Features
